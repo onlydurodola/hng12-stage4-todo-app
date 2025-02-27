@@ -11,9 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 # Copy and install requirements
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir thriftpy2 py_zipkin==0.20.2
-
+RUN pip install --no-cache-dir thriftpy2 py_zipkin==0.20.2 redis==2.10.6 requests
 # Runtime Stage
 FROM python:3.11-slim
 WORKDIR /app

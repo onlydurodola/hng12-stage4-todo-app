@@ -7,9 +7,9 @@ COPY package*.json ./
 
 # Install Babel to transpile ES6+ code for UglifyJs compatibility
 RUN npm install --save-dev \
-    babel-loader@8.3.0 \
-    @babel/core@7.22.0 \
-    @babel/preset-env@7.22.0
+    babel-loader@7.1.5 \
+    babel-core@6.26.3 \
+    babel-preset-env@1.7.0
 
 # Install dependencies as specified in package.json
 RUN npm install

@@ -122,6 +122,9 @@ services:
       - "--certificatesresolvers.myresolver.acme.email=nowonlywork@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       - "--certificatesresolvers.myresolver.acme.httpChallenge.entrypoint=web"
+      - "--certificatesresolvers.myresolver.acme.caServer=https://acme.zerossl.com/v2/DV90"
+      - "--certificatesresolvers.myresolver.acme.eab.kid=7Mt1GvCkjDjcVkpf16RCJg"
+      - "--certificatesresolvers.myresolver.acme.eab.hmac=oR2fq1zYOhoC2iF_JVd-mT5_rfqPZIBBTmir75-rIaQcdRnYvYkcwRsHiBrS7RNHFVcU7YfvmecgkbCvFEVSpQ"
     labels:
       - "traefik.http.middlewares.acme-exclude.stripprefix.prefixes=/.well-known/acme-challenge"
       - "traefik.http.routers.acme-exclude.rule=PathPrefix(`/.well-known/acme-challenge`)"
@@ -132,6 +135,10 @@ services:
       - "traefik.http.routers.web-to-websecure.rule=HostRegexp(`{host:.+}`)"
       - "traefik.http.routers.web-to-websecure.entrypoints=web"
       - "traefik.http.routers.web-to-websecure.middlewares=redirect-web-to-websecure@docker"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.oluwatobiloba.tech`)"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls.certresolver=myresolver"
+      - "traefik.http.routers.traefik.service=api@internal"
     ports:
       - "80:80"
       - "443:443"

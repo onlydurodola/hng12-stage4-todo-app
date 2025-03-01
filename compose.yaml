@@ -124,7 +124,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.httpChallenge.entrypoint=web"
       - "--certificatesresolvers.myresolver.acme.caServer=https://acme.zerossl.com/v2/DV90"
       - "--certificatesresolvers.myresolver.acme.eab.kid=7Mt1GvCkjDjcVkpf16RCJg"
-      - "--certificatesresolvers.myresolver.acme.eab.hmac=oR2fq1zYOhoC2iF_JVd-mT5_rfqPZIBBTmir75-rIaQcdRnYvYkcwRsHiBrS7RNHFVcU7YfvmecgkbCvFEVSpQ"
+      - "--certificatesresolvers.myresolver.acme.eab.hmacEncoded=oR2fq1zYOhoC2iF_JVd-mT5_rfqPZIBBTmir75-rIaQcdRnYvYkcwRsHiBrS7RNHFVcU7YfvmecgkbCvFEVSpQ"
     labels:
       - "traefik.http.middlewares.acme-exclude.stripprefix.prefixes=/.well-known/acme-challenge"
       - "traefik.http.routers.acme-exclude.rule=PathPrefix(`/.well-known/acme-challenge`)"
